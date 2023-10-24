@@ -13,13 +13,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val btn_start : Button = findViewById(R.id.btn_start)
-        val et_text : EditText = findViewById(R.id.et_name)
+        val et_name : EditText = findViewById(R.id.et_name)
         btn_start.setOnClickListener {
-            if(et_text.text.isEmpty()){
+            if(et_name.text.isEmpty()){
                 Toast.makeText(this, "Name can't be empty!", Toast.LENGTH_SHORT).show()
             }
             else{
                 val intent: Intent = Intent(this, QuizQuestionsActivity::class.java)
+                intent.putExtra(Constants.USER_NAME, et_name.text.toString())
                 startActivity(intent)
                 finish()
             }
